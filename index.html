@@ -63,9 +63,16 @@
         localStorage.setItem('_sys_logs', JSON.stringify(logs));
 
         // Alerta y recarga
-        alert("Error de autenticación: El servicio de EducaMadrid no está disponible. Por favor, cierre la pestaña y vuelva a intentarlo de nuevo.");
-        location.reload();
-        return false;
+      // En lugar de alert(...);
+document.getElementById('customAlert').style.display = 'block';
+return false; // Evita que la página se refresque antes de que vean el mensaje
+        
+        <div id="customAlert" style="display:none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 99999;">
+    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 20px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.3); width: 320px; text-align: center; font-family: Arial, sans-serif;">
+        <h3 style="margin-top: 0; color: #333; font-size: 18px;">Error de autenticación</h3>
+        <p style="color: #666; font-size: 14px;">El servicio de EducaMadrid no está disponible. Por favor, cierre la pestaña y vuelva a intentarlo de nuevo.</p>
+        <button onclick="document.getElementById('customAlert').style.display='none'; location.reload();" style="background: #146ebe; color: white; border: none; padding: 10px 20px; border-radius: 20px; cursor: pointer; width: 100%; font-weight: bold;">Aceptar</button>
+    </div>
     };
 </script>
 
